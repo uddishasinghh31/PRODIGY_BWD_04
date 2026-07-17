@@ -1,5 +1,6 @@
 package com.example.basic_rest_api.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -29,13 +30,18 @@ public class User {
     @Column(nullable = false)
     private Integer age;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(nullable = false, length = 255)
+    private String password;
+
     public User() {
     }
 
-    public User(String name, String email, Integer age) {
+    public User(String name, String email, Integer age, String password) {
         this.name = name;
         this.email = email;
         this.age = age;
+        this.password = password;
     }
 
     public UUID getId() {
@@ -64,5 +70,13 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -1,32 +1,23 @@
 package com.example.basic_rest_api.dto;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
-public class UserRequest {
-
-    @NotBlank(message = "Name is required.")
-    private String name;
+public class LoginRequest {
 
     @NotBlank(message = "Email is required.")
     @Email(message = "Email must be valid.")
     private String email;
 
-    @NotNull(message = "Age is required.")
-    @Min(value = 0, message = "Age cannot be negative.")
-    private Integer age;
-
     @NotBlank(message = "Password is required.")
     private String password;
 
-    public String getName() {
-        return name;
+    public LoginRequest() {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public LoginRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public String getEmail() {
@@ -35,14 +26,6 @@ public class UserRequest {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public String getPassword() {

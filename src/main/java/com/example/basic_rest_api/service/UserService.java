@@ -22,7 +22,9 @@ public class UserService {
         User user = new User(
                 request.getName().trim(),
                 request.getEmail().trim().toLowerCase(),
-                request.getAge()
+                request.getAge(),
+                request.getPassword()
+
         );
 
         return userRepository.save(user);
