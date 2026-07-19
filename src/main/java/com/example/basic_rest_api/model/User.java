@@ -1,5 +1,5 @@
 package com.example.basic_rest_api.model;
-
+import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,8 +13,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "users")
-public class User {
-
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @UuidGenerator
     @JdbcTypeCode(SqlTypes.BINARY)
