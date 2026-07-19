@@ -366,7 +366,7 @@ Bearer your_jwt_token
 ## 📂 Project Structure
 
 <p align="center">
-<img src="task_4_fileStructure.png" width="280"/>
+<img src="docs/screenshots/task_4_fileStructure.png" width="280"/>
 </p>
 
 ---
@@ -374,7 +374,7 @@ Bearer your_jwt_token
 ## 🎫 JWT Token Generated
 
 <p align="center">
-<img src="task_4_postman_working.png" width="850"/>
+<img src="docs/screenshots/task_4_postman_working.png" width="850"/>
 </p>
 
 ---
@@ -390,7 +390,7 @@ Bearer your_jwt_token
 ## ⚡ Redis Cache
 
 <p align="center">
-<img src="redis_caching.png" width="850"/>
+<img src="docs/screenshots/redis_caching.png" width="850"/>
 </p>
 
 ---
@@ -398,7 +398,7 @@ Bearer your_jwt_token
 ## 🐳 Docker Redis Container
 
 <p align="center">
-<img src="redis_containers.png" width="850"/>
+<img src="docs/screenshots/redis_containers.png" width="850"/>
 </p>
 
 ---
