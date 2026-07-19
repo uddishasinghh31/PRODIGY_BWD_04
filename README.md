@@ -1,17 +1,20 @@
+# 🚀 Spring Boot User Management REST API
+
 <div align="center">
 
-# 🚀 Spring Boot User CRUD REST API
+![Java](https://img.shields.io/badge/Java-25-orange?style=for-the-badge&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.1-green?style=for-the-badge&logo=springboot)
+![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=springsecurity)
+![JWT](https://img.shields.io/badge/JWT-Authentication-black?style=for-the-badge)
+![Redis](https://img.shields.io/badge/Redis-Docker-red?style=for-the-badge&logo=redis)
+![Docker](https://img.shields.io/badge/Docker-Container-blue?style=for-the-badge&logo=docker)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql)
+![Flyway](https://img.shields.io/badge/Flyway-Migrations-brown?style=for-the-badge)
+![Maven](https://img.shields.io/badge/Maven-Build-red?style=for-the-badge&logo=apachemaven)
 
-### RESTful CRUD Operations using Spring Boot | Java | Maven | UUID | Validation
+### Secure User Management REST API using Spring Boot
 
-![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.x-6DB33F?style=for-the-badge&logo=springboot)
-![Maven](https://img.shields.io/badge/Maven-Build-C71A36?style=for-the-badge&logo=apachemaven)
-![REST API](https://img.shields.io/badge/REST-API-blue?style=for-the-badge)
-![Validation](https://img.shields.io/badge/Jakarta-Validation-success?style=for-the-badge)
-![UUID](https://img.shields.io/badge/UUID-Identifier-purple?style=for-the-badge)
-
-**A clean and well-structured RESTful API built with Spring Boot that performs complete CRUD operations on user data using in-memory storage, request validation, UUID identifiers, and layered architecture.**
+A production-style REST API built using **Spring Boot**, **Spring Security**, **JWT Authentication**, **Redis Caching**, **MySQL**, **Flyway Database Migration**, and **Docker**.
 
 </div>
 
@@ -19,70 +22,96 @@
 
 # 📌 Project Overview
 
-This project was developed as part of the **Prodigy InfoTech Internship – Task 1: Build a REST API for CRUD Operations**.
+This project demonstrates how modern backend applications are built using Spring Boot with secure authentication, database persistence, caching, and database version control.
 
-The application demonstrates the fundamentals of backend development by implementing a RESTful API capable of creating, retrieving, updating, and deleting user records.
+The application follows a clean layered architecture:
 
-The project follows a clean layered architecture (**Controller → Service → DTO → Model**) and uses **HashMap** as an in-memory data store, making it ideal for learning Spring Boot fundamentals before integrating a database.
+- Controller
+- Service
+- Repository
+- Database
+
+The project secures all protected endpoints using **JWT Authentication** and improves performance using **Redis Cache** running inside a **Docker container**.
 
 ---
 
 # ✨ Features
 
-- ✅ Create User
-- ✅ Retrieve All Users
-- ✅ Retrieve User by ID
-- ✅ Update Existing User
-- ✅ Delete User
-- ✅ UUID Generated for Every User
-- ✅ In-Memory Storage using HashMap
-- ✅ Request Validation
-- ✅ Global Exception Handling
-- ✅ Layered Architecture
-- ✅ RESTful API Design
-- ✅ Tested using Postman
+- 🔐 JWT Authentication
+- 👤 User Registration
+- 🔑 User Login
+- 🛡 Spring Security
+- 📦 CRUD Operations
+- 🗄 MySQL Database
+- ⚡ Redis Cache
+- 🐳 Dockerized Redis
+- 🔄 Flyway Database Migration
+- 📑 Request Validation
+- ❌ Global Exception Handling
+- 🧩 Layered Architecture
+- 🚀 Maven Build
+- 📬 API Testing using Postman
 
 ---
 
 # 🛠 Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| Java 21 | Programming Language |
-| Spring Boot | Backend Framework |
-| Spring Web MVC | REST API Development |
-| Maven | Dependency Management |
-| Jakarta Bean Validation | Request Validation |
-| UUID | Unique User Identifier |
-| HashMap | In-Memory Storage |
-| IntelliJ IDEA | Development Environment |
-| Postman | API Testing |
+| Technology | Used |
+|------------|------|
+| Java 25 | ✅ |
+| Spring Boot | ✅ |
+| Spring Security | ✅ |
+| JWT | ✅ |
+| Spring Data JPA | ✅ |
+| Hibernate | ✅ |
+| MySQL | ✅ |
+| Redis | ✅ |
+| Docker | ✅ |
+| Flyway | ✅ |
+| Maven | ✅ |
+| IntelliJ IDEA | ✅ |
+| Postman | ✅ |
 
 ---
 
 # 🏗 Project Architecture
 
 ```text
-                 Client (Postman)
+                Client (Postman)
 
-                        │
-                        ▼
+                       │
+                       ▼
 
-             ┌─────────────────────┐
-             │   UserController     │
-             └─────────────────────┘
-                        │
-                        ▼
+              Spring Security
 
-             ┌─────────────────────┐
-             │    UserService       │
-             └─────────────────────┘
-                        │
-                        ▼
+                       │
+                       ▼
 
-             ┌─────────────────────┐
-             │ HashMap<UUID, User>  │
-             └─────────────────────┘
+             JWT Authentication
+
+                       │
+                       ▼
+
+              User Controller
+
+                       │
+                       ▼
+
+               Service Layer
+
+              ↙              ↘
+
+        Redis Cache      JPA Repository
+
+              │               │
+
+           Docker        Hibernate ORM
+
+                              │
+
+                              ▼
+
+                       MySQL Database
 ```
 
 ---
@@ -92,114 +121,174 @@ The project follows a clean layered architecture (**Controller → Service → D
 ```text
 basic-rest-api
 │
+├── docs
+│   └── screenshots
+│
 ├── src
 │   ├── main
-│   │   ├── java
-│   │   │   └── com.example.basic_rest_api
-│   │   │
-│   │   ├── controller
-│   │   │     └── UserController.java
-│   │   │
-│   │   ├── dto
-│   │   │     └── UserRequest.java
-│   │   │
-│   │   ├── exception
-│   │   │     ├── GlobalExceptionHandler.java
-│   │   │     └── UserNotFoundException.java
-│   │   │
-│   │   ├── model
-│   │   │     └── User.java
-│   │   │
-│   │   ├── service
-│   │   │     └── UserService.java
-│   │   │
-│   │   └── BasicRestApiApplication.java
+│   │
+│   ├── java
+│   │     └── com.example.basic_rest_api
+│   │
+│   │          ├── config
+│   │          ├── controller
+│   │          ├── dto
+│   │          ├── exception
+│   │          ├── model
+│   │          ├── repository
+│   │          ├── security
+│   │          ├── service
+│   │          └── BasicRestApiApplication
 │   │
 │   └── resources
+│        ├── application.properties
+│        └── db
+│             └── migration
 │
 ├── pom.xml
+├── docker-compose.yml
 ├── README.md
 └── .gitignore
 ```
 
 ---
 
-# 📦 Data Model
-
-Each user contains the following fields:
-
-| Field | Type |
-|--------|------|
-| id | UUID |
-| name | String |
-| email | String |
-| age | Integer |
-
----
-
 # 🔗 REST API Endpoints
 
-| Method | Endpoint | Description | Response |
-|---------|----------|-------------|----------|
-| POST | `/api/users` | Create User | 201 Created |
-| GET | `/api/users` | Retrieve All Users | 200 OK |
-| GET | `/api/users/{id}` | Retrieve User by UUID | 200 OK |
-| PUT | `/api/users/{id}` | Update User | 200 OK |
-| DELETE | `/api/users/{id}` | Delete User | 204 No Content |
+## Authentication APIs
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/auth/register` | Register User |
+| POST | `/auth/login` | Login User |
 
 ---
 
-# 🧪 Sample Request
+## User APIs
 
-## Create User
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/users` | Get All Users |
+| GET | `/users/{id}` | Get User by ID |
+| PUT | `/users/{id}` | Update User |
+| DELETE | `/users/{id}` | Delete User |
 
-```http
-POST /api/users
-```
-
-```json
-{
-  "name": "Ritu Singh",
-  "email": "ritu@example.com",
-  "age": 24
-}
-```
+> 🔒 All User APIs require a valid JWT Token.
 
 ---
 
-## Successful Response
+# 🔐 JWT Authentication Flow
 
-```json
-{
-  "id": "81acc614-cae5-44a2-881e-d85156fa6efb",
-  "name": "Ritu Singh",
-  "email": "ritu@example.com",
-  "age": 24
-}
-```
+```text
+Register User
+      │
+      ▼
+Login
+      │
+      ▼
+JWT Token Generated
+      │
+      ▼
+Authorization Header
 
----
+Bearer <JWT Token>
 
-# ⚠️ Validation & Error Handling
-
-| Scenario | Status Code |
-|----------|-------------|
-| Invalid Request Body | 400 Bad Request |
-| Invalid Email | 400 Bad Request |
-| Missing Required Fields | 400 Bad Request |
-| User Not Found | 404 Not Found |
-
-Example Error Response
-
-```json
-{
-  "error": "User not found with id: xxxxxxxxx"
-}
+      │
+      ▼
+Spring Security Filter
+      │
+      ▼
+Protected APIs
 ```
 
 ---
 
-# ⚙️ How to Run the Project
+# ⚡ Redis Cache Flow
+
+```text
+Client
+
+   │
+
+GET /users
+
+   │
+
+   ▼
+
+Redis Cache ?
+
+YES ─────────► Return Cached Response
+
+NO
+
+ │
+
+ ▼
+
+MySQL Database
+
+ │
+
+ ▼
+
+Store Data in Redis
+
+ │
+
+ ▼
+
+Return Response
+```
+
+Redis is used to cache frequently requested user data to reduce unnecessary database queries and improve response time.
+
+---
+
+# 🐳 Docker
+
+Redis runs inside a Docker container.
+
+### Run Redis
+
+```bash
+docker run -d --name redis-server -p 6379:6379 redis
+```
+
+### Start Existing Container
+
+```bash
+docker start redis-server
+```
+
+### Verify Running Containers
+
+```bash
+docker ps
+```
+
+---
+
+# 🗄 Flyway Database Migration
+
+Database schema is managed automatically using Flyway.
+
+```text
+V1__create_users_table.sql
+
+↓
+
+V2__insert_initial_data.sql
+
+↓
+
+Executed Automatically
+During Application Startup
+```
+
+---
+
+# 🚀 Getting Started
 
 ## Clone Repository
 
@@ -209,29 +298,45 @@ git clone https://github.com/uddishasinghh31/YOUR_REPOSITORY_NAME.git
 
 ---
 
-## Open in IntelliJ IDEA
+## Open Project
 
-Import the project as a **Maven Project** and allow dependencies to download.
+Open the project using IntelliJ IDEA.
 
 ---
 
-## Run the Application
+## Configure MySQL
 
-Using Maven
+Update your `application.properties`.
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/prodigy_task2_db
+spring.datasource.username=root
+spring.datasource.password=your_password
+```
+
+---
+
+## Start Redis
+
+```bash
+docker start redis-server
+```
+
+---
+
+## Run Application
 
 ```bash
 mvn spring-boot:run
 ```
 
-or simply run
+or run
 
 ```
 BasicRestApiApplication.java
 ```
 
----
-
-The application starts at
+Application starts on:
 
 ```
 http://localhost:8080
@@ -239,53 +344,123 @@ http://localhost:8080
 
 ---
 
-# 📝 Notes
+# 📮 Testing with Postman
 
-- Data is stored in memory using **HashMap**.
-- Restarting the application clears all stored users.
-- UUIDs are automatically generated for every new user.
-- Input validation is handled using Jakarta Bean Validation annotations.
+1. Register a new user.
+2. Login using registered credentials.
+3. Copy the generated JWT Token.
+4. Add it to the Authorization Header.
+
+```text
+Authorization
+
+Bearer your_jwt_token
+```
+
+5. Access all protected APIs.
+
+---
+
+# 📸 Project Screenshots
+
+## 📂 Project Structure
+
+<p align="center">
+<img src="docs/screenshots/task_4_fileStructure.png" width="280"/>
+</p>
+
+---
+## 🎫 Postman Working
+
+<p align="center">
+<img src="docs/screenshots/task_4_postman_working.png" width="850"/>
+</p>
+
+---
+
+## 🎫 JWT Token Generated
+
+<p align="center">
+<img src="docs/screenshots/token_generation.png" width="850"/>
+</p>
+
+---
+
+
+
+## ⚡ Redis Cache
+
+<p align="center">
+<img src="docs/screenshots/redis_caching.png" width="850"/>
+</p>
+
+---
+
+## 🐳 Docker Redis Container
+
+<p align="center">
+<img src="docs/screenshots/redis_containers.png" width="850"/>
+</p>
+
+---
+
+# 🎥 Project Demo
+
+<p align="center">
+<img src="docs/screenshots/DEMO_VIDEO.mp4" width="900"/>
+</p>
+
+Or upload a video and link it here.
 
 ---
 
 # 🚀 Future Improvements
 
-- MySQL Database Integration
-- Spring Data JPA
-- Hibernate ORM
-- Flyway Database Migration
-- Spring Security
-- JWT Authentication
-- Swagger/OpenAPI Documentation
-- Docker Support
-- Unit Testing with JUnit & Mockito
-- Cloud Deployment (AWS / Railway / Render)
+- 📄 Swagger / OpenAPI Documentation
+- 👥 Role-Based Authentication
+- 🔄 Refresh Tokens
+- 📊 Pagination & Sorting
+- 🔍 Search APIs
+- 🧪 Unit Testing
+- ☁ Cloud Deployment
+- ⚙ CI/CD Pipeline
+- 📈 Monitoring using Prometheus & Grafana
 
 ---
 
-# 👩‍💻 Author
+# 👩‍💻 Developed By
 
-**Udisha Singh**
+## Udisha
 
-Backend Developer | Java | Spring Boot | MySQL
+Aspiring Java Backend Developer
 
-- **GitHub:** https://github.com/uddishasinghh31
-- **LinkedIn:** https://www.linkedin.com/in/udisha-singh-47170b338
+### Skills
+
+- ☕ Java
+- 🌱 Spring Boot
+- 🔐 Spring Security
+- 🎫 JWT Authentication
+- 🗄 MySQL
+- ⚡ Redis
+- 🐳 Docker
+- 🚀 REST APIs
+
+GitHub:
+
+```
+https://github.com/uddishasinghh31
+```
 
 ---
 
-# 📄 Internship Details
+# ⭐ Support
 
-**Organization:** Prodigy InfoTech
+If you found this project useful,
 
-- **Task 1:** Build a REST API for CRUD Operations using Spring Boot
-- **Storage:** In-Memory using HashMap
-- **Architecture:** Controller → Service → DTO → Model
-
----
+⭐ Consider giving this repository a **Star**!
 
 <div align="center">
 
-### ⭐ If you found this project useful, please consider giving it a Star!
+## Made with ❤️ using Spring Boot
 
 </div>
