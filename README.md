@@ -445,10 +445,8 @@ Aspiring Java Backend Developer
 - 🐳 Docker
 - 🚀 REST APIs
 
-GitHub:
 
-```
-https://github.com/uddishasinghh31
+Linkedin: https://www.linkedin.com/in/udisha-singh-47170b338 
 ```
 
 ---
